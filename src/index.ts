@@ -1,13 +1,12 @@
 import express from "express";
-import authRoutes from "./routes/users/userRoutes";
-import documentRoutes from "./routes/document/documentRoutes";
-import tagRoutes from "./routes/document/tagRoutes";
-import downloadRoutes from "./routes/document/downloadRoutes";
-import searchRoute from "./routes/document/searchRoute";
-import permissionRoutes from "./routes/document/permissionRoutes";
+import authRoutes from "./presentation/routes/userRoutes";
+import documentRoutes from "./presentation/routes/documentRoutes";
+import tagRoutes from "./presentation/routes/tagRoutes";
+import downloadRoutes from "./presentation/routes/downloadRoutes";
+import searchRoute from "./presentation/routes/searchRoute";
+import permissionRoutes from "./presentation/routes/permissionRoutes";
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+export const app = express();
 
 // Middleware
 app.use(express.json());
@@ -20,6 +19,8 @@ app.use("/api/downloads", downloadRoutes);
 app.use("/api/search", searchRoute);
 app.use("/api/permissions", permissionRoutes);
 
+// Start the server
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port: ${PORT}`);
 });

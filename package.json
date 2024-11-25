@@ -4,7 +4,11 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --respawn src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "ts-node src/infrastructure/drizzle/seeder/seedDatabase.ts",
+    "test": "mocha",
+    "bulk-download": "ts-node src/cli/bulkDownload.ts",
+    "bulk-download:dev": "ts-node-dev --loader @esbuild-kit/esm-loader src/cli/bulkDownload.ts",
+    "test:supabase": "ts-node src/utils/testSupabaseIntegration.ts"
   },
   "keywords": [],
   "author": "",
